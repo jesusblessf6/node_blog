@@ -34,7 +34,8 @@ if ('development' == app.get('env')) {
 
 app.get('/', index.index);
 app.get('/users', user.list);
-app.get('/mgmnt', mgmnt.index);
+app.get('/mgmnt', mgmnt.mgmnt_login);
+app.get('/mgmnt_home', mgmnt.mgmnt_home);
 app.delete('/user/:id', user.delete);
 
 http.createServer(app).listen(app.get('port'), function(){
