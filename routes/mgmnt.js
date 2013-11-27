@@ -12,5 +12,5 @@ exports.login = function(req, res){
 }
 
 function checkMgmntLogin(){
-	return true;
+	return false;
 }

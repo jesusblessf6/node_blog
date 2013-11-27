@@ -19,6 +19,8 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
+app.use(express.cookieParser());
+app.use(express.session({secret: "1234"}));
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -31,13 +33,14 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-
+//routes
 app.get('/', index.index);
 app.get('/users', user.list);
 app.get('/mgmnt', mgmnt.home);
 app.get('/mgmnt/login', mgmnt.login);
 app.delete('/user/:id', user.delete);
 
+//server starts
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
