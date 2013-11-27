@@ -1,7 +1,16 @@
 exports.home = function(req, res){
-	res.render('mgmnt/home', {title: '管理首页'});
+	if(checkMgmntLogin()){
+		res.render('mgmnt/home', {title: '管理首页'});
+	}
+	else{
+		res.redirect('/mgmnt/login');
+	}
 };
 
-exports.mgmnt_login = function(req, res){
-	res.render('mgmnt/mgmnt_login', {title: '管理页登录'});
+exports.login = function(req, res){
+	res.render('mgmnt/login', {title: '管理页登录'});
+}
+
+function checkMgmntLogin(){
+	return true;
 }
