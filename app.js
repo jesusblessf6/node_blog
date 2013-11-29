@@ -5,12 +5,10 @@
 
 var express = require('express');
 var routes = require('./routes');
-var index = require('./routes/index');
-var mgmnt = require('./routes/mgmnt')
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var ejs = require('ejs');
+var SessionStore = require("session-mongoose")(express);
 
 var app = express();
 
@@ -34,11 +32,7 @@ if ('development' == app.get('env')) {
 }
 
 //routes
-app.get('/', index.index);
-app.get('/users', user.list);
-app.get('/mgmnt', mgmnt.home);
-app.get('/mgmnt/login', mgmnt.login);
-app.delete('/user/:id', user.delete);
+routes(app);
 
 //server starts
 http.createServer(app).listen(app.get('port'), function(){
