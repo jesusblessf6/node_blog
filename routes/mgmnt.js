@@ -20,7 +20,7 @@ exports.register_new = function(req, res){
 };
 
 exports.register_create = function(req,res){
-	
+	res.send("hello");
 };
 
 function checkMgmntLogin(){
