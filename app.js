@@ -8,7 +8,9 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var ejs = require('ejs');
-var SessionStore = require("session-mongoose")(express);
+var MongoStore = require('connect-mongo')(express);
+var settings = require('./settings');
+var flash = require('connect-flash');
 
 var app = express();
 
@@ -17,14 +19,25 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
-app.use(express.cookieParser());
-app.use(express.session({secret: "1234"}));
+app.use(flash());
+
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.cookieParser());
+app.use(express.session({
+	secret: "1234",
+	key: settings.db,
+	cookie: {maxAge: 1000 * 60 * 60 * 24 * 30},//30 days
+	store: new MongoStore({
+	    db: settings.db
+	})
+}));
 
 // development only
 if ('development' == app.get('env')) {

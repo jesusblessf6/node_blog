@@ -1,6 +1,6 @@
 
 /*
- * GET users listing.
+ * user router
  */
 
 exports.list = function(req, res){
@@ -9,5 +9,5 @@ exports.list = function(req, res){
 };
 
 exports.delete = function(req, res){
-
+	
 };

@@ -1,0 +1,32 @@
+<% include ../header.html %>
+
+<div class="col-md-4 col-md-offset-4" style="margin-top:100px;">
+	<form class="form-horizontal" method="POST" role="form">
+		<div class="caption">
+			<h2 style="margin-bottom:40px;">注册新管理员</h2>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label" for="admin_name">登录名</label>
+			<div class="col-sm-7">
+				<input id="admin_name" name="admin_name" class="form-control" required autofocus type="text">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label" for="password">密码</label>
+			<div class="col-sm-7">
+				<input class="form-control" required id="password" type="password" name="password">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-4 control-label" for="passwordConfirm">密码确认</label>
+			<div class="col-sm-7">
+				<input class="form-control" required id="passwordConfirm" type="password" name="passwordConfirm">
+			</div>
+		</div>
+		<div class="form-group text-center">
+			<input type="submit" class="btn btn-primary">
+		</div>
+	</form>
+</div>
+
+<% include ../footer.html %>

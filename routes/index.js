@@ -3,8 +3,8 @@
  * Routers center
  */
 
- var mgmnt = require("./mgmnt");
- var user = require("./user");
+var mgmnt = require("./mgmnt");
+var user = require("./user");
 
 module.exports = function(app){
 
@@ -14,6 +14,8 @@ module.exports = function(app){
 
 	app.get('/users', user.list);
 	app.get('/mgmnt', mgmnt.home);
-	app.get('/mgmnt/login', mgmnt.login);
+	app.get('/mgmnt_login', mgmnt.login);
+	app.get('/mgmnt_reg', mgmnt.register_new);
+	app.post('/mgmnt_reg', mgmnt.register_create);
 	app.delete('/user/:id', user.delete);
 }
