@@ -15,6 +15,11 @@ exports.login = function(req, res){
 	res.render('mgmnt/login', {title: '管理页登录'});
 };
 
+exports.login_act = function(req, res){
+	//login anthentication
+	
+};
+
 exports.register_new = function(req, res){
 	res.render('mgmnt/register', {title: '管理员注册'});
 };
