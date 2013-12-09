@@ -54,9 +54,7 @@ server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-io.sockets.on('connection', function(socket){
-	
-});
-
+var listener = require('./routes/socket_listener');
+listener(io);
 //console.log(app.routes);
 
